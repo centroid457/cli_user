@@ -1,4 +1,4 @@
-# clisender
+# cli_sender
 Designed to send commands into OS terminal
 
 ## Features
@@ -16,13 +16,13 @@ See the [HISTORY.md](HISTORY.md) file for release history.
 
 ## Installation
 ```commandline
-pip install clisender
+pip install cli-sender
 ```
 
 ## Import
 
 ```python
-from clisender import *
+from cli_sender import *
 ```
 
 
@@ -31,7 +31,7 @@ from clisender import *
 ### USAGE
 
 ```python
-from clisender import *
+from cli_sender import *
 
 victim = CliSender()
 

@@ -4,7 +4,7 @@ import pathlib
 import platform
 from typing import *
 
-from clisender import *
+from cli_sender import *
 
 
 # =====================================================================================================================
