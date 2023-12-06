@@ -1,9 +1,11 @@
 import subprocess
+import datetime
+
 from typing import *
 
 
 # =====================================================================================================================
-# TODO: add execution time
+# TODO:
 
 
 # =====================================================================================================================
@@ -59,6 +61,7 @@ class CliSender:
     _last_sp: Optional[subprocess.Popen] = None
     _last_exx_timeout: Optional[Exx_CliTimeout] = None
 
+    last_duration: float = 0
     last_cmd: str = ""
     last_stdout: str = ""         # USE ONLY "" AS DEFAULT!!!
     last_stderr: str = ""         # USE ONLY "" AS DEFAULT!!!
@@ -78,6 +81,7 @@ class CliSender:
         self._last_sp = None
         self._last_exx_timeout = None
 
+        self.last_duration = 0
         self.last_cmd = ""
         self.last_stdout = ""
         self.last_stderr = ""
@@ -112,14 +116,17 @@ class CliSender:
 
         # work --------------------------------------------------------------------------------------------------------
         # todo: check for linux! encoding is not necessary!
+        time_start = datetime.datetime.now()
         self._last_sp = subprocess.Popen(args=cmd, text=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    #, encoding="cp866"
         try:
             self._last_sp.wait(timeout=timeout)
+            self.last_duration = (datetime.datetime.now() - time_start).total_seconds()
             self.last_stdout = self._last_sp.stdout.read()
             self.last_stderr = self._last_sp.stderr.read()
             self.last_retcode = self._last_sp.returncode
         except subprocess.TimeoutExpired as exx:
             self._last_exx_timeout = Exx_CliTimeout(repr(exx))
+            self.last_duration = (datetime.datetime.now() - time_start).total_seconds()
 
         self.last_finished = True
         self.print_state()
@@ -148,8 +155,9 @@ class CliSender:
         if not self.last_finished_success:
             print(f"[{'#'*21}ERROR{'#'*21}]")
         print(f"{self.last_cmd=}")
-        print(f"{self.last_finished_success=}")
+        print(f"{self.last_duration=}")
         print(f"{self.last_finished=}")
+        print(f"{self.last_finished_success=}")
         print(f"{self.last_retcode=}")
         print(f"-" * 50)
         print("self.last_stdout=")
