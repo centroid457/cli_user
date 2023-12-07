@@ -1,6 +1,11 @@
 Release History
 ===============
 
+0.0.3 (2023-12-07)
+-------------------
+**NEW**
+- add _buffer_indent and print lines as REPR
+
 0.0.2 (2023-12-06)
 -------------------
 **NEW**

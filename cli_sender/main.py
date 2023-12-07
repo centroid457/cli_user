@@ -1,5 +1,6 @@
 import subprocess
 import datetime
+import platform
 
 from typing import *
 
@@ -67,6 +68,8 @@ class CliSender:
     last_stderr: str = ""         # USE ONLY "" AS DEFAULT!!!
     last_retcode: Optional[int] = None
     last_finished: Optional[bool] = None
+
+    _buffer_indent: str = "\t|"
 
     # init ------------------------------------------------------------------------------------------------------------
     def __init__(self, *args, **kwargs):
@@ -163,12 +166,12 @@ class CliSender:
         print("self.last_stdout=")
         if self.last_stdout:
             for line in self.last_stdout.split("\n"):
-                print(f"\t{line}")
+                print(f"{self._buffer_indent}{line!r}")
         print(f"-"*50)
         print("self.last_stderr=")
         if self.last_stderr:
             for line in self.last_stderr.split("\n"):
-                print(f"\t{line}")
+                print(f"{self._buffer_indent}{line!r}")
         print(f"-" * 50)
         print(f"{self._last_exx_timeout=}")
         print(f"="*50)
@@ -187,6 +190,18 @@ class CliSender:
                     self.print_state()
                     return False
         return True
+
+
+# =====================================================================================================================
+if __name__ == "__main__":
+    victim = CliSender()
+
+    if "Windows" in platform.system():
+        cmd_line = "ping -n 1 localhost"
+    else:
+        cmd_line = "ping -c 1 localhost"
+
+    assert victim.send(cmd_line, timeout=2)
 
 
 # =====================================================================================================================
