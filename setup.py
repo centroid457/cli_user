@@ -12,7 +12,7 @@ with open("README.md", "r") as f:
 NAME = "cli_user"
 
 setup(
-  version="0.0.3",
+  version="0.0.4",
   description="use OS terminal",
   keywords=[
     "cli", "cli user", "cli sender",
