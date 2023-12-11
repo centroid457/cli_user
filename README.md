@@ -33,7 +33,7 @@ from cli_user import *
 ```python
 from cli_user import *
 
-victim = CliSender()
+victim = CliUser()
 
 cmd_line = "ping localhost"
 victim.send(cmd_line, timeout=0.1)

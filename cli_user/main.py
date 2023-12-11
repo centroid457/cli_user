@@ -31,7 +31,7 @@ class Exx_CliStderr(Exception):
 
 
 # =====================================================================================================================
-class CliSender:
+class CliUser:
     """Class which directly send (ONE!) command to OS terminal
 
     :ivar TIMEOUT: default timeout for execution process
@@ -194,7 +194,7 @@ class CliSender:
 
 # =====================================================================================================================
 if __name__ == "__main__":
-    victim = CliSender()
+    victim = CliUser()
 
     if "Windows" in platform.system():
         cmd_line = "ping -n 1 localhost"

@@ -9,7 +9,7 @@ from cli_user import *
 # =====================================================================================================================
 class Test:
     def test__ok(self):
-        victim = CliSender()
+        victim = CliUser()
 
         if "Windows" in platform.system():
             cmd_line = "ping -n 1 localhost"
@@ -27,7 +27,7 @@ class Test:
         assert victim.last_finished_success
 
     def test__exx_timeout(self):
-        victim = CliSender()
+        victim = CliUser()
 
         cmd_line = "ping localhost"
         assert not victim.send(cmd_line, timeout=0.1)
@@ -41,7 +41,7 @@ class Test:
         assert not victim.last_finished_success
 
     def test__exx_not_exists(self):
-        victim = CliSender()
+        victim = CliUser()
 
         cmd_line = "ping123"
         assert not victim.send(cmd_line, timeout=10)
@@ -56,11 +56,11 @@ class Test:
 
     def test__exx_cli_available(self):
         # one cmd ------------------------------------------------
-        class CliSenderForAvailable(CliSender):
+        class CliUserForAvailable(CliUser):
             CMDS_REQUIRED = {"ping123": None, }
 
         try:
-            victim = CliSenderForAvailable()
+            victim = CliUserForAvailable()
         except Exception as exx:
             assert isinstance(exx, Exx_CliNotAvailable)
 
@@ -70,10 +70,10 @@ class Test:
         else:
             cmd_ping_1 = "ping -c 1 localhost"
 
-        class CliSenderForAvailable(CliSender):
+        class CliUserForAvailable(CliUser):
             CMDS_REQUIRED = {cmd_ping_1: None, }
 
-        victim = CliSenderForAvailable()
+        victim = CliUserForAvailable()
         assert victim.cli_check_available()
 
 
