@@ -49,6 +49,42 @@ class CliUser:
         dict with NAME - exact commands which will send into terminal in order to check some utility is installed,
         VALUE - message if command get any error
 
+        RECOMMENDATIONS
+        --------------
+        1. --HELP never works as expected! always timedout!!!!
+            [#####################ERROR#####################]
+            self.last_cmd='STM32_Programmer_CLI --help'
+            self.last_duration=2.029675
+            self.last_finished=True
+            self.last_finished_success=False
+            self.last_retcode=None
+            --------------------------------------------------
+            self.last_stdout=
+            --------------------------------------------------
+            self.last_stderr=
+            --------------------------------------------------
+            self._last_exx_timeout=Exx_CliTimeout("TimeoutExpired('STM32_Programmer_CLI --help', 2)")
+            ==================================================
+            [ERROR] cmd NOT available [STM32_Programmer_CLI --help]
+            ==================================================
+
+        2. DIRECT SIMPLE CLI COMMAND AS UTILITY_NAME.EXE without any parameter MAY NOT WORK!!! may timedout! implied the same as HELP parameter!
+            [#####################ERROR#####################]
+            self.last_cmd='STM32_Programmer_CLI'
+            self.last_duration=2.022585
+            self.last_finished=True
+            self.last_finished_success=False
+            self.last_retcode=None
+            --------------------------------------------------
+            self.last_stdout=
+            --------------------------------------------------
+            self.last_stderr=
+            --------------------------------------------------
+            self._last_exx_timeout=Exx_CliTimeout("TimeoutExpired('STM32_Programmer_CLI', 2)")
+            ==================================================
+
+        3. use --VERSION! instead! - seems work fine always!
+
     :exception Exx_CliNotAvailable:
     :exception Exx_CliTimeout:
     :exception Exx_CliRetcode:
