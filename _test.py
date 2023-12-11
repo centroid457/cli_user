@@ -3,7 +3,7 @@ import pathlib
 import platform
 from typing import *
 
-from cli_sender import *
+from cli_user import *
 
 
 # =====================================================================================================================

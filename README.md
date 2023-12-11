@@ -16,13 +16,13 @@ See the [HISTORY.md](HISTORY.md) file for release history.
 
 ## Installation
 ```commandline
-pip install cli-sender
+pip install cli-user
 ```
 
 ## Import
 
 ```python
-from cli_sender import *
+from cli_user import *
 ```
 
 
@@ -31,7 +31,7 @@ from cli_sender import *
 ### USAGE
 
 ```python
-from cli_sender import *
+from cli_user import *
 
 victim = CliSender()
 
