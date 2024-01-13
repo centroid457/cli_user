@@ -5,6 +5,9 @@ Designed to send commands into OS terminal
 1. send commands into OS terminal
 2. check if cli commands are accessible (special utilities is installed)
 3. access to standard parts of result in a simple ready-to-use form (stdout/stderr/retcode/full state)
+4. use batch timeout for list
+5. till_first_true
+6. counter/counter_in_list
 
 ## License
 See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
