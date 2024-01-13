@@ -192,6 +192,9 @@ class CliUser:
             self.counter_in_list = 0
 
         # params apply ------------------------------------------------------------------------------------------------
+        msg = f"[CLI_SEND] [{cmd}]"
+        print(msg)
+
         self.last_cmd = cmd
         self.counter += 1
 
