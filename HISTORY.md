@@ -3,7 +3,14 @@ Release History
 
 TODOS/WISHES
 ------------
-1. 
+
+
+0.0.5 (2024-01-14)
+-------------------
+- fix list cmds
+- reduce batch timeout for list cmds
+- add counter/counter_in_list
+- add till_first_true
 
 0.0.4 (2023-12-11)
 -------------------
