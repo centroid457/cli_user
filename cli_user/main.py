@@ -148,7 +148,8 @@ class CliUser:
             timeout: Optional[float] = None,
             till_first_true: Optional[bool] = None,
             _raise: Optional[bool] = None,
-            _use_counter_list: Optional[bool] = None
+            _use_counter_list: Optional[bool] = None,
+            print_all_states: Optional[bool] = None
     ) -> Union[bool, NoReturn]:
         """execute CLI command in terminal
 
@@ -157,6 +158,7 @@ class CliUser:
         :param till_first_true: useful for detection or just multiPlatform usage
         :param _raise: if till_first_true=True it will not work (return always bool in this case)!!!
         :param _use_counter_list: DONT USE! internal flag for counter_in_list
+        :param print_all_states: all or only Failed
         """
         # CMDS LIST ---------------------------------------------------------------------------------------------------
         if isinstance(cmd, (list, tuple, )):
@@ -226,7 +228,8 @@ class CliUser:
             self.last_duration = (datetime.datetime.now() - time_start).total_seconds()
 
         self.last_finished = True
-        self.print_state()
+        if print_all_states or not self.last_finished_success:
+            self.print_state()
 
         if _raise:
             if self.last_exx_timeout:
