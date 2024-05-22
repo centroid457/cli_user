@@ -1,10 +1,10 @@
-# cli_user (v0.0.7)
+# cli_user (v0.0.8)
 
 ## DESCRIPTION_SHORT
-Send commands into system terminal
+send commands into system terminal
 
 ## DESCRIPTION_LONG
-designed to send commands into os terminal
+Designed to send commands into OS terminal
 
 
 ## Features
