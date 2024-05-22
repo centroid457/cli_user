@@ -1,9 +1,8 @@
+from typing import *
 import subprocess
 import datetime
 import platform
 import time
-
-from typing import *
 
 
 # =====================================================================================================================
