@@ -33,7 +33,7 @@ class Exx_CliStderr(Exception):
 
 # =====================================================================================================================
 class CliUser:
-    """Class which directly send (ONE!) command to OS terminal
+    """Class which directly send commands to OS terminal
 
     :ivar TIMEOUT: default timeout for execution process
         if timeout expired and process still not finished - raise exx
@@ -283,18 +283,6 @@ class CliUser:
                     self.print_state()
                     return False
         return True
-
-
-# =====================================================================================================================
-if __name__ == "__main__":
-    victim = CliUser()
-
-    if "Windows" in platform.system():
-        cmd_line = "ping -n 1 localhost"
-    else:
-        cmd_line = "ping -c 1 localhost"
-
-    assert victim.send(cmd_line, timeout=2)
 
 
 # =====================================================================================================================

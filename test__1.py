@@ -4,10 +4,11 @@ import platform
 from typing import *
 
 from cli_user import *
+from requirements_checker import *
 
 
 # =====================================================================================================================
-if "Windows" in platform.system():
+if ReqCheckStr_Os.bool_if__WINDOWS():
     CMD_PING_1 = "ping -n 1 localhost"
     CMD_PING_2 = "ping -n 2 localhost"
 else:
