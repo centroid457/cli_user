@@ -3,7 +3,8 @@ from _aux__release_files import release_files_update
 
 
 # =====================================================================================================================
-VERSION = (0, 0, 3)   # 1/deprecate _VERSION_TEMPLATE from PRJ object +2/place update_prj here in __main__ +3/separate finalize attrs
+# VERSION = (0, 0, 3)   # 1/deprecate _VERSION_TEMPLATE from PRJ object +2/place update_prj here in __main__ +3/separate finalize attrs
+VERSION = (0, 0, 4)     # add AUTHOR_NICKNAME_GITHUB for badges
 
 
 # =====================================================================================================================
@@ -12,6 +13,7 @@ class PROJECT:
     AUTHOR_NAME: str = "Andrei Starichenko"
     AUTHOR_EMAIL: str = "centroid@mail.ru"
     AUTHOR_HOMEPAGE: str = "https://github.com/centroid457/"
+    AUTHOR_NICKNAME_GITHUB: str = "centroid457"
 
     # PROJECT ----------------------------------------------
     NAME_IMPORT: str = "cli_user"
@@ -43,7 +45,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 8)
+    VERSION: Tuple[int, int, int] = (0, 0, 9)
     TODO: List[str] = [
         "..."
     ]
@@ -51,8 +53,9 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[__INIT__.py] fix import",
-        "apply last pypi template",
+        ["apply last pypi template2",
+            "badges/cicd",
+         ]
     ]
 
     # FINALIZE -----------------------------------------------
