@@ -22,6 +22,8 @@ from .main import (
     CliUser,
     # AUX
     # TYPES
+    TYPE__CMD,
+    TYPE__CMDS,
     # EXX
     Exx_CliNotAvailable,
     Exx_CliTimeout,

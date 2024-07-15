@@ -1,7 +1,6 @@
-import pytest
-import pathlib
-import platform
 from typing import *
+import pytest
+from pytest_aux import *
 
 from cli_user import *
 from requirements_checker import *
@@ -9,8 +8,8 @@ from requirements_checker import *
 
 # =====================================================================================================================
 if ReqCheckStr_Os.bool_if__WINDOWS():
-    CMD_PING_1 = "ping -n 1 localhost"
-    CMD_PING_2 = "ping -n 2 localhost"
+    CMD_PING_1 = "ping -n 1 localhost"      #momentary! less then 0.1sec!
+    CMD_PING_2 = "ping -n 2 localhost"      #about 1sec!
 else:
     CMD_PING_1 = "ping -c 1 localhost"
     CMD_PING_2 = "ping -c 2 localhost"
@@ -81,6 +80,24 @@ class Test:
         assert bool(victim.last_stderr) is False
         assert victim.last_retcode == 0
         assert victim.last_finished_success
+
+    @pytest.mark.parametrize(
+        argnames="cmds, timeout, _EXPECTED",
+        argvalues=[
+            (CMD_PING_2, 0.1, False),
+            ((CMD_PING_2, 0.1), 0.1, False),
+            ((CMD_PING_2, 1.1), 0.1, True),
+
+            ([(CMD_PING_1, 0.1), CMD_PING_1], 0.1, True),
+            ([(CMD_PING_1, 0.1), CMD_PING_2], 0.1, False),
+            ([(CMD_PING_1, 0.1), (CMD_PING_2, 1.1)], 0.1, True),
+            ([(CMD_PING_1, 0.1), (CMD_PING_2, None)], 0.1, False),
+            ([(CMD_PING_1, 0.1), (CMD_PING_2, None)], 1.1, True),
+        ]
+    )
+    def test__tuple(self, cmds, timeout, _EXPECTED):
+        func_link = CliUser().send(cmd=cmds, timeout=timeout)
+        pytest_func_tester__no_args_kwargs(func_link, _EXPECTED)
 
     def test__list__till_first_true(self):
         victim = CliUser()

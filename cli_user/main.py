@@ -1,13 +1,17 @@
 from typing import *
 import subprocess
 import datetime
-import platform
 import time
 
 
 # =====================================================================================================================
 # TODO: is it necessary to add wait param in send? think not! but maybe use thread start?
 pass
+
+
+# =====================================================================================================================
+TYPE__CMD = Union[str, tuple[str, float | None]]
+TYPE__CMDS = Union[TYPE__CMD, list[TYPE__CMD]]
 
 
 # =====================================================================================================================
@@ -29,6 +33,12 @@ class Exx_CliRetcode(Exception):
 class Exx_CliStderr(Exception):
     """CLI exx because of stderr have any data
     """
+
+
+# =====================================================================================================================
+class CliCmd:
+    # TODO: ADD
+    pass
 
 
 # =====================================================================================================================
@@ -144,7 +154,7 @@ class CliUser:
     # SEND ------------------------------------------------------------------------------------------------------------
     def send(
             self,
-            cmd: Union[str, List[str]],
+            cmd: TYPE__CMDS,
             timeout: Optional[float] = None,
             till_first_true: Optional[bool] = None,
             _raise: Optional[bool] = None,
@@ -161,7 +171,7 @@ class CliUser:
         :param print_all_states: all or only Failed
         """
         # CMDS LIST ---------------------------------------------------------------------------------------------------
-        if isinstance(cmd, (list, tuple, )):
+        if isinstance(cmd, list):
             self.counter_in_list = 0
             time_start = time.time()
             result = True
@@ -196,6 +206,11 @@ class CliUser:
         # params apply ------------------------------------------------------------------------------------------------
         msg = f"[CLI_SEND] [{cmd}]"
         print(msg)
+
+        if isinstance(cmd, tuple) and len(cmd) == 2:
+            cmd, timeout_i = cmd
+            if timeout_i is not None:
+                timeout = timeout_i
 
         self.last_cmd = cmd
         self.counter += 1
