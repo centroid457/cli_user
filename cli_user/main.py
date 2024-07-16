@@ -165,7 +165,7 @@ class CliUser:
 
         :param cmd: commands for execution
         :param timeout: use special timeout step_result_enum, instead of default, for cms_list will used as cumulated!
-            # TODO: need decide about cumulation! more preferable apply as default!
+            # TODO: need decide about cumulation! more preferable apply as default! -NO its OK!
         :param till_first_true: useful for detection or just multiPlatform usage
         :param _raise: if till_first_true=True it will not work (return always bool in this case)!!!
         :param _use_counter_list: DONT USE! internal flag for counter_in_list
