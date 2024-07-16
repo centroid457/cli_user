@@ -184,7 +184,10 @@ class CliUser:
             for cmd_item in cmd:
                 self.counter_in_list += 1
                 time_passed = time.time() - time_start
-                timeout = timeout - time_passed
+                try:
+                    timeout = timeout - time_passed
+                except:
+                    pass
 
                 result = self.send(cmd=cmd_item, timeout=timeout, _raise=_raise_list, _use_counter_list=True)
 
