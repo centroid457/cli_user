@@ -45,7 +45,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 10)
+    VERSION: Tuple[int, int, int] = (0, 0, 11)
     TODO: List[str] = [
         "..."
     ]
@@ -53,7 +53,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "add tuple for cmd with new timeout"
+        "fix list not_passed_timeout"
     ]
 
     # FINALIZE -----------------------------------------------

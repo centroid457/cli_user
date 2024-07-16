@@ -81,6 +81,11 @@ class Test:
         assert victim.last_retcode == 0
         assert victim.last_finished_success
 
+    def test__list_not_passed_timeout(self):
+        victim = CliUser()
+        assert not victim.send([CMD_PING_1, CMD_PING_2], timeout=0.1)
+        assert victim.send([CMD_PING_1, CMD_PING_2])
+
     @pytest.mark.parametrize(
         argnames="cmds, timeout, _EXPECTED",
         argvalues=[
