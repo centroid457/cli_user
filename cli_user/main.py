@@ -225,6 +225,7 @@ class CliUser:
         if timeout < 0:
             msg = f"{timeout=} is sub zero"
             self.last_exx_timeout = Exx_CliTimeout(msg)
+            print(msg)
             if _raise:
                 raise Exx_CliTimeout(msg)
             else:
