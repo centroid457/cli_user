@@ -45,7 +45,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 11)
+    VERSION: Tuple[int, int, int] = (0, 1, 0)
     TODO: List[str] = [
         "..."
     ]
@@ -53,7 +53,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "fix list not_passed_timeout"
+        "[PYPI/template] apply new shareFull"
     ]
 
     # FINALIZE -----------------------------------------------
