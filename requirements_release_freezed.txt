@@ -19,7 +19,7 @@ cffi==1.15.1
 charset-normalizer==2.1.0
 classes_aux==0.1.4
 cli-sender==0.0.3
-cli_user==0.1.0
+cli_user==0.1.1
 click==8.1.7
 clisender==0.0.1
 colorama==0.4.6

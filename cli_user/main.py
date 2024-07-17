@@ -237,7 +237,7 @@ class CliUser:
         time_start = time.time()
         lines = []
         while self._last_sp.poll() is None:
-            self.last_duration = time.time() - time_start
+            self.last_duration = round(time.time() - time_start, 3)
             if timeout < self.last_duration:
                 self._last_sp.kill()
                 self.last_exx_timeout = Exx_CliTimeout()

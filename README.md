@@ -9,7 +9,7 @@
 ![Commit/Count/y](https://img.shields.io/github/commit-activity/y/centroid457/cli_user)
 ![Commit/Count/m](https://img.shields.io/github/commit-activity/m/centroid457/cli_user)
 
-# cli_user (current v0.1.1/![Ver/Pypi Latest](https://img.shields.io/pypi/v/cli_user?label=pypi%20latest))
+# cli_user (current v0.1.2/![Ver/Pypi Latest](https://img.shields.io/pypi/v/cli_user?label=pypi%20latest))
 
 ## DESCRIPTION_SHORT
 send commands into system terminal
@@ -64,71 +64,65 @@ print()
 victim = CliUser()
 victim.send("ping localhost", timeout=0.1)
 print()
-victim.print_state()
+# victim.print_state()
 """
 [CLI_SEND] [ping localhost]
+....
 ==================================================
 [#####################ERROR#####################]
 self.counter=1
 self.counter_in_list=0
 self.last_cmd='ping localhost'
-self.last_duration=0.122466
+self.last_duration=1.041
 self.last_finished=True
 self.last_finished_success=False
 self.last_retcode=None
 --------------------------------------------------
 self.last_stdout=
---------------------------------------------------
-self.last_stderr=
---------------------------------------------------
-self.last_exx_timeout=Exx_CliTimeout("TimeoutExpired('ping localhost', 0.1)")
-==================================================
-
-==================================================
-[#####################ERROR#####################]
-self.counter=1
-self.counter_in_list=0
-self.last_cmd='ping localhost'
-self.last_duration=0.122466
-self.last_finished=True
-self.last_finished_success=False
-self.last_retcode=None
---------------------------------------------------
-self.last_stdout=
---------------------------------------------------
-self.last_stderr=
---------------------------------------------------
-self.last_exx_timeout=Exx_CliTimeout("TimeoutExpired('ping localhost', 0.1)")
-==================================================
-"""
-
-print()
-print()
-print()
-print()
-victim.send("python --version", timeout=1)
-print()
-victim.print_state()
-"""
-[CLI_SEND] [python --version]
-
-==================================================
-self.counter=2
-self.counter_in_list=0
-self.last_cmd='python --version'
-self.last_duration=0.044547
-self.last_finished=True
-self.last_finished_success=True
-self.last_retcode=0
---------------------------------------------------
-self.last_stdout=
-	|'Python 3.11.7'
+	|''
+	|'РћР±РјРµРЅ РїР°РєРµС‚Р°РјРё СЃ starichenko.corp.element-t.ru [::1] СЃ 32 Р±Р°Р№С‚Р°РјРё РґР°РЅРЅС‹С…:'
+	|'РћС‚РІРµС‚ РѕС‚ ::1: РІСЂРµРјСЏ<1РјСЃ '
+	|'РћС‚РІРµС‚ РѕС‚ ::1: РІСЂРµРјСЏ<1РјСЃ '
 	|''
 --------------------------------------------------
 self.last_stderr=
 --------------------------------------------------
-self.last_exx_timeout=None
+self.last_exx_timeout=Exx_CliTimeout()
 ==================================================
+"""
+
+print()
+print()
+print()
+print()
+victim.send(["python --version", ("ping localhost", 0.1), ])
+"""
+[CLI_SEND] [python --version]
+.
+[CLI_SEND] [('ping localhost', 0.1)]
+....
+==================================================
+[#####################ERROR#####################]
+self.counter=3
+self.counter_in_list=2
+self.last_cmd='ping localhost'
+self.last_duration=1.042
+self.last_finished=True
+self.last_finished_success=False
+self.last_retcode=None
+--------------------------------------------------
+self.last_stdout=
+	|''
+	|'РћР±РјРµРЅ РїР°РєРµС‚Р°РјРё СЃ starichenko.corp.element-t.ru [::1] СЃ 32 Р±Р°Р№С‚Р°РјРё РґР°РЅРЅС‹С…:'
+	|'РћС‚РІРµС‚ РѕС‚ ::1: РІСЂРµРјСЏ<1РјСЃ '
+	|'РћС‚РІРµС‚ РѕС‚ ::1: РІСЂРµРјСЏ<1РјСЃ '
+	|''
+--------------------------------------------------
+self.last_stderr=
+--------------------------------------------------
+self.last_exx_timeout=Exx_CliTimeout()
+==================================================
+[ERROR] cmd_item=('ping localhost', 0.1) in full sequence cmd=['python --version', ('ping localhost', 0.1)]
 """
 ```
 
