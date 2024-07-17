@@ -45,7 +45,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 0)
+    VERSION: Tuple[int, int, int] = (0, 1, 1)
     TODO: List[str] = [
         "..."
     ]
@@ -53,7 +53,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[PYPI/template] apply new shareFull"
+        "add print Dots while read lines (for each one)"
     ]
 
     # FINALIZE -----------------------------------------------

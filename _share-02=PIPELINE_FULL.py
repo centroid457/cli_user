@@ -13,7 +13,10 @@ from cli_user import *
 
 
 # =====================================================================================================================
-VERSION = (0, 0, 1)   # first attempt
+# VERSION = (0, 0, 1)   # first attempt
+# VERSION = (0, 0, 2)   # add commented testPypi
+# VERSION = (0, 0, 3)   # fix --Verbose!
+VERSION = (0, 0, 4)   # fix param Noisolation! used to be able build with any modules in root PyFiles
 
 
 # =====================================================================================================================
@@ -24,11 +27,13 @@ cli.send("rd build\ /q /s", 10)
 
 cmds_timeout = [
     # build new ------------
-    ("python -m build --sdist", 60),
-    ("python -m build --wheel", 60),
+    ("python -m build --sdist -n", 60),
+    ("python -m build --wheel -n", 60),
 
     # share ------------
-    ("twine upload dist/* --verbose", 90),
+    # ("twine upload dist/* -r testpypi", 90),  # TESTPYPI
+    # ("twine upload dist/* --verbose", 90),    # DONT USE --VERBOSE!!!!
+    ("twine upload dist/*", 90),
 ]
 result = cli.send(cmds_timeout) and Packages().upgrade_prj(PROJECT)
 
