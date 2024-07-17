@@ -9,7 +9,7 @@
 ![Commit/Count/y](https://img.shields.io/github/commit-activity/y/centroid457/cli_user)
 ![Commit/Count/m](https://img.shields.io/github/commit-activity/m/centroid457/cli_user)
 
-# cli_user (current v0.1.2/![Ver/Pypi Latest](https://img.shields.io/pypi/v/cli_user?label=pypi%20latest))
+# cli_user (current v0.1.3/![Ver/Pypi Latest](https://img.shields.io/pypi/v/cli_user?label=pypi%20latest))
 
 ## DESCRIPTION_SHORT
 send commands into system terminal

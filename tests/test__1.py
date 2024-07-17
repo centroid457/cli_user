@@ -125,9 +125,8 @@ class Test:
     def test__exx_timeout(self):
         victim = CliUser()
 
-        cmd_line = "ping localhost"
-        assert not victim.send(cmd_line, timeout=0.1)
-        assert victim.last_cmd == cmd_line
+        assert not victim.send(CMD_PING_2, timeout=0.1)
+        assert victim.last_cmd == CMD_PING_2
         assert victim.last_finished is True
 
         assert isinstance(victim.last_exx_timeout, Exx_CliTimeout)

@@ -45,7 +45,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 2)
+    VERSION: Tuple[int, int, int] = (0, 1, 3)
     TODO: List[str] = [
         "..."
     ]
@@ -53,7 +53,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "round last_duration"
+        "fix linux tests"
     ]
 
     # FINALIZE -----------------------------------------------
