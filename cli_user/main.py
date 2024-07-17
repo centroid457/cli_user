@@ -1,12 +1,6 @@
 from typing import *
 import subprocess
-import datetime
 import time
-
-
-# =====================================================================================================================
-# TODO: is it necessary to add wait param in send? think not! but maybe use thread start?
-pass
 
 
 # =====================================================================================================================
@@ -237,18 +231,29 @@ class CliUser:
                 return False
 
         # todo: check for linux! encoding is not necessary!
-        time_start = datetime.datetime.now()
-        self._last_sp = subprocess.Popen(args=cmd, text=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    #, encoding="cp866"
-        try:
-            self._last_sp.wait(timeout=timeout)
-            self.last_duration = (datetime.datetime.now() - time_start).total_seconds()
-            self.last_stdout = self._last_sp.stdout.read()
-            self.last_stderr = self._last_sp.stderr.read()
-            self.last_retcode = self._last_sp.returncode
-        except subprocess.TimeoutExpired as exx:
-            self.last_exx_timeout = Exx_CliTimeout(repr(exx))
-            self.last_duration = (datetime.datetime.now() - time_start).total_seconds()
+        self._last_sp = subprocess.Popen(args=cmd, text=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="cp866")    #, encoding="cp866"
 
+        # WORK --------------------------------
+        time_start = time.time()
+        lines = []
+        while self._last_sp.poll() is None:
+            self.last_duration = time.time() - time_start
+            if timeout < self.last_duration:
+                self._last_sp.kill()
+                self.last_exx_timeout = Exx_CliTimeout()
+                break
+            line = self._last_sp.stdout.readline()
+            if line != "":
+                lines.append(line)
+                print(".", end="")
+            # print(f"[{repr(line)}]")
+
+        if lines:
+            self.last_stdout = "".join(lines)
+            print()
+
+        self.last_stderr = self._last_sp.stderr.read()
+        self.last_retcode = self._last_sp.returncode
         self.last_finished = True
         if print_all_states or not self.last_finished_success:
             self.print_state()
